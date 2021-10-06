@@ -9,16 +9,15 @@ public class BallScript : MonoBehaviour
     //force awal bola
     public float xInitialForce;
     public float yInitialForce;
+    public float speed;
 
     public bool is_reset = true;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-
         RestartGame();
     }
-
     void ResetBall()
     {
         //reset posisi
@@ -30,13 +29,20 @@ public class BallScript : MonoBehaviour
     {
         float yRandomInitialForce = Random.Range(-yInitialForce, yInitialForce);
         float randomDirection = Random.Range(0,2);
-
+        //if (randomDirection < 1.0f)
+        //{
+        //    rigidbody2D.AddForce(Vector2.ClampMagnitude(new Vector2(-xInitialForce, yRandomInitialForce), maxSpeed*5));
+        //} else
+        //{
+        //    rigidbody2D.AddForce(Vector2.ClampMagnitude(new Vector2(xInitialForce, yRandomInitialForce), maxSpeed*5));
+        //}
         if (randomDirection < 1.0f)
         {
-            rigidbody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
-        } else
+            rigidbody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce).normalized * speed * 5);
+        }
+        else
         {
-            rigidbody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
+            rigidbody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce).normalized * speed * 5);
         }
         is_reset = true;
     }
