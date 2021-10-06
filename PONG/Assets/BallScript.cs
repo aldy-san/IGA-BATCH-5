@@ -9,6 +9,8 @@ public class BallScript : MonoBehaviour
     //force awal bola
     public float xInitialForce;
     public float yInitialForce;
+
+    public bool is_reset = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +19,6 @@ public class BallScript : MonoBehaviour
         RestartGame();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void ResetBall()
     {
         //reset posisi
@@ -41,10 +38,15 @@ public class BallScript : MonoBehaviour
         {
             rigidbody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
         }
+        is_reset = true;
     }
     void RestartGame()
     {
-        ResetBall();
-        Invoke("PushBall", 2);
+        if (is_reset)
+        {
+            is_reset = false;
+            ResetBall();
+            Invoke("PushBall", 2);
+        }
     }
 }

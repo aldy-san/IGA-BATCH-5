@@ -12,10 +12,33 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rigidbody2D; //ambil rigid body object ini
     private int score; //score
 
-
+    //debugging information
+    private ContactPoint2D lastContactPoint;
+    private Vector2 trajectoryOrigin;
+    public ContactPoint2D LastContactPoint
+    {
+        get { return lastContactPoint; }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("Ball"))
+        {
+            lastContactPoint = collision.GetContact(0);
+        }
+    }
+    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        trajectoryOrigin = transform.position;
+    }
+    public Vector2 TrajectoryOrigin
+    {
+        get { return trajectoryOrigin; }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        trajectoryOrigin = transform.position;
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
