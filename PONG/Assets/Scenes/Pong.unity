@@ -468,6 +468,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xInitialForce: 50
   yInitialForce: 15
+  speed: 10
+  is_reset: 1
 --- !u!58 &737538914
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -29,13 +29,6 @@ public class BallScript : MonoBehaviour
     {
         float yRandomInitialForce = Random.Range(-yInitialForce, yInitialForce);
         float randomDirection = Random.Range(0,2);
-        //if (randomDirection < 1.0f)
-        //{
-        //    rigidbody2D.AddForce(Vector2.ClampMagnitude(new Vector2(-xInitialForce, yRandomInitialForce), maxSpeed*5));
-        //} else
-        //{
-        //    rigidbody2D.AddForce(Vector2.ClampMagnitude(new Vector2(xInitialForce, yRandomInitialForce), maxSpeed*5));
-        //}
         if (randomDirection < 1.0f)
         {
             rigidbody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce).normalized * speed * 5);
