@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     public float speed = 10.0f; // kecepatan
     public float yBoundary = 9.0f; //batas vertikal
 
-    private Rigidbody2D rigidbody2D; //ambil rigid body object ini
+    private Rigidbody2D m_Rigidbody2D; //ambil rigid body object ini
     private int score; //score
 
     //debugging information
@@ -39,13 +39,13 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         trajectoryOrigin = transform.position;
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 velocity = rigidbody2D.velocity;
+        Vector2 velocity = m_Rigidbody2D.velocity;
         //input gerakan
         if (Input.GetKey(upButton))
         {
@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
         {
             velocity.y = 0;
         }
-        rigidbody2D.velocity = velocity;
+        m_Rigidbody2D.velocity = velocity;
         
         //Biar ga lewat batas
         Vector3 position = transform.position;

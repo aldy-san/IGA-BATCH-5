@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D m_Rigidbody2D;
 
     //force awal bola
     public float xInitialForce;
@@ -12,18 +12,22 @@ public class BallScript : MonoBehaviour
     public float speed;
 
     public bool is_reset = true;
+
+    public Vector2 TrajectoryOrigin;
+
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
         RestartGame();
+        TrajectoryOrigin = transform.position;
     }
     void ResetBall()
     {
         //reset posisi
         transform.position = Vector2.zero;
         //reset kecepatan
-        rigidbody2D.velocity = Vector2.zero;
+        m_Rigidbody2D.velocity = Vector2.zero;
     }
     void PushBall()
     {
@@ -31,14 +35,15 @@ public class BallScript : MonoBehaviour
         float randomDirection = Random.Range(0,2);
         if (randomDirection < 1.0f)
         {
-            rigidbody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce).normalized * speed * 5);
+            m_Rigidbody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce).normalized * speed * 5);
         }
         else
         {
-            rigidbody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce).normalized * speed * 5);
+            m_Rigidbody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce).normalized * speed * 5);
         }
         is_reset = true;
     }
+ 
     void RestartGame()
     {
         if (is_reset)
