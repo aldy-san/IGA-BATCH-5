@@ -343,11 +343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2642432664113324038, guid: 0cb52e722c5764849914ce759390c331, type: 3}
       propertyPath: upButton
-      value: 273
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 2642432664113324038, guid: 0cb52e722c5764849914ce759390c331, type: 3}
       propertyPath: downButton
-      value: 274
+      value: 108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cb52e722c5764849914ce759390c331, type: 3}
