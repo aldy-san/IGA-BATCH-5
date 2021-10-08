@@ -20,6 +20,9 @@ public class BallScript : MonoBehaviour
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         RestartGame();
+    }
+    void Update()
+    {
         TrajectoryOrigin = transform.position;
     }
     void ResetBall()

@@ -40,7 +40,7 @@ public class Trajectory : MonoBehaviour
 
                     if (outDot > -1.0f && outDot < 1.0)
                     {
-                        DottedLine.DottedLine.Instance.DrawDottedLine(offsetHitPoint, (offsetHitPoint + outVector) * 10.0f);
+                        DottedLine.DottedLine.Instance.DrawDottedLine(offsetHitPoint, offsetHitPoint + outVector * 10.0f);
                         drawBallAtCollision = true;
                     }
                 }
