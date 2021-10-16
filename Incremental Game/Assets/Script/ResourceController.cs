@@ -12,12 +12,23 @@ public class ResourceController : MonoBehaviour
     public TextMeshProUGUI ResourceUpgradeCost;
     public TextMeshProUGUI ResourceUnlockCost;
     private GameManager.ResourceConfig _config;
+    public bool IsUnlocked { get; private set; }
     private int _level = 1;
 
     private void Start()
 
     {
-        ResourceButton.onClick.AddListener(UpgradeLevel);
+        ResourceButton.onClick.AddListener(() =>
+        {
+            if (IsUnlocked)
+            {
+                UpgradeLevel();
+            }
+            else
+            {
+                UnlockResource();
+            }
+        });
     }
     public void UpgradeLevel()
     {
@@ -41,6 +52,27 @@ public class ResourceController : MonoBehaviour
         ResourceUnlockCost.text = $"Unlock Cost\n{ _config.UnlockCost }";
         ResourceUpgradeCost.text = $"Upgrade Cost\n{ GetUpgradeCost() }";
         //SetUnlocked(_config.UnlockCost == 0);
+        SetUnlocked(_config.UnlockCost == 0);
+    }
+    public void UnlockResource()
+    {
+        double unlockCost = GetUnlockCost();
+        if (GameManager.Instance._totalGold < unlockCost)
+        {
+            return;
+        }
+        GameManager.Instance.AddGold(-unlockCost);
+        SetUnlocked(true);
+        GameManager.Instance.ShowNextResource();
+        AchievementController.Instance.UnlockAchievement(AchievementType.UnlockResource, _config.Name);
+    }
+
+    public void SetUnlocked(bool unlocked)
+    {
+        IsUnlocked = unlocked;
+        ResourceImage.color = IsUnlocked ? Color.white : Color.grey;
+        ResourceUnlockCost.gameObject.SetActive(!unlocked);
+        ResourceUpgradeCost.gameObject.SetActive(unlocked);
     }
     public double GetOutput()
     {

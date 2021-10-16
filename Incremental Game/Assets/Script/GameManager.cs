@@ -58,12 +58,29 @@ public class GameManager : MonoBehaviour
     }
     private void AddAllResources()
     {
+        bool showResources = true;
         foreach (ResourceConfig config in ResourcesConfigs)
         {
             GameObject obj = Instantiate(ResourcePrefab.gameObject, ResourcesParent, false);
             ResourceController resource = obj.GetComponent<ResourceController>();
             resource.SetConfig(config);
+            obj.gameObject.SetActive(showResources);
+            if (showResources && !resource.IsUnlocked)
+            {
+                showResources = false;
+            }
             _activeResources.Add(resource);
+        }
+    }
+    public void ShowNextResource()
+    {
+        foreach (ResourceController resource in _activeResources)
+        {
+            if (!resource.gameObject.activeSelf)
+            {
+                resource.gameObject.SetActive(true);
+                break;
+            }
         }
     }
     private void CollectPerSecond()
@@ -71,7 +88,19 @@ public class GameManager : MonoBehaviour
         double output = 0;
         foreach (ResourceController resource in _activeResources)
         {
-            output += resource.GetOutput();
+            bool isBuyable = false;
+            if (resource.IsUnlocked)
+            {
+                isBuyable = _totalGold >= resource.GetUpgradeCost();
+            }
+            else
+            {
+                isBuyable = _totalGold >= resource.GetUnlockCost();
+            }
+            if (resource.IsUnlocked)
+            {
+                output += resource.GetOutput();
+            }
         }
         output = output * AutoCollectPercentage;
         AutoCollectInfo.text = $"Auto Collect: { output.ToString("F1") } / second";
@@ -87,7 +116,10 @@ public class GameManager : MonoBehaviour
         double output = 0;
         foreach (ResourceController resource in _activeResources)
         {
-            output += resource.GetOutput();
+            if (resource.IsUnlocked)
+            {
+                output += resource.GetOutput();
+            }
         }
         TapText tapText = GetOrCreateTapText();
         tapText.transform.SetParent(parent, false);
