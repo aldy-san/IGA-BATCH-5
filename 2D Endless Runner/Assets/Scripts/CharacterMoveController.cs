@@ -32,7 +32,7 @@ public class CharacterMoveController : MonoBehaviour
     public float fallPositionY;
 
     [Header("Camera")]
-    public CameraMoveController gameCamera;
+    public CameraController gameCamera;
 
     private CharacterSoundController sound;
     private Animator anim;
