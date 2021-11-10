@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _healthFill.size = _healthBar.size;
+        float BarFill = ((float)_currentHealth / (float)_maxHealth);
+        _healthFill.transform.localScale = new Vector3(BarFill, 1, 1);
     }
 
     public void MoveToTarget()
