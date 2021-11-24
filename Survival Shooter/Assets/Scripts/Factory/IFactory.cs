@@ -1,5 +1,5 @@
 using UnityEngine;
 public interface IFactory
 {
-    GameObject FactoryMethod();
+    GameObject FactoryMethod(int tag);
 }
