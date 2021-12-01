@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185964744866",
+    "project_id": "dilo---increnmental-game",
+    "storage_bucket": "dilo---increnmental-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185964744866:android:6a84bc715f5d18c7bf07fb",
+        "android_client_info": {
+          "package_name": "com.dilo.IncrenmentalGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185964744866-2o59lpj05anb419jsm589152r0qqhrk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBimPVKehKBfCAWejeGNver5sHMs231vbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185964744866-2o59lpj05anb419jsm589152r0qqhrk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
