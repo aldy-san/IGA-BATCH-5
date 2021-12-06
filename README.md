@@ -14,12 +14,12 @@
 
 ## Angry Birds ✔️
 
-## Match Three
+## Match Three ✔️
 
-## Survival Shooter
+## Survival Shooter ✔️
 
-## Basic firebase implementation
+## Basic firebase implementation ✔️
 
-## Technical design document
+## Technical design document ✔️
 
 ## Problem solving challenge
