@@ -22,4 +22,5 @@
 
 ## Technical design document ✔️
 
-## Problem solving challenge
+## Problem solving challenge ✔️
+https://github.com/aldy-san/Problem-Solving
